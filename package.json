@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "react-router-dom": "^7.18.1"
+  },
+
+  "prisma": {
+  "seed": "node prisma/seed.js"
+}
+
+}
