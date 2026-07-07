@@ -38,7 +38,7 @@ function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/planner" className={navLinkStyle}>
+            <NavLink to="/weekly-planner" className={navLinkStyle}>
               Menu Planner
             </NavLink>
           </li>

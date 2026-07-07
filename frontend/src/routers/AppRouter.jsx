@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../components/Layout/MainLayout';
 import Home from '../pages/Home/Home'; // Perhatikan jalur folder Home/Home.jsx
 import Recipes from '../pages/Recipedetail/Recipedetail'; // Dummy sementara untuk menu resep
+import WeeklyPlanner from '../pages/Weeklyplanner/Weeklyplanner';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         path: 'resep',
         element: <Recipes />,
       },
+      {
+        path: 'weekly-planner',
+        element: <WeeklyPlanner />,
+    },
     ],
   },
 ]);
