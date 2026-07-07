@@ -1,22 +1,44 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../components/Layout/MainLayout';
-import Home from '../pages/Home/Home'; // Perhatikan jalur folder Home/Home.jsx
-import Recipes from '../pages/Recipedetail/Recipedetail'; // Dummy sementara untuk menu resep
+import Home from '../pages/Home/Home'; 
+import Recipes from '../pages/Recipedetail/Recipedetail'; 
+import Login from '../pages/Login/Login';         
+import Register from '../pages/Register/Register';   
+import Dashboard from '../pages/Dashboard/Dashboard'; 
 
 const router = createBrowserRouter([
+  // 1. KELOMPOK HALAMAN PUBLIC (DENGAN NAVBAR & FOOTER)
   {
     path: '/',
-    element: <MainLayout />, // Ini yang bertugas memanggil Navbar & Footer secara global
+    element: <MainLayout />, 
     children: [
       {
-        index: true, // Halaman utama saat akses (/)
-        element: <Home />, // Konten utama Home.jsx akan masuk ke bagian <Outlet /> di MainLayout
+        index: true, // Terbuka otomatis saat pertama kali aplikasi di-run (http://localhost:5173/)
+        element: <Home />, 
+      },
+      {
+        path: 'beranda', // Opsional: Jika diakses lewat rute /beranda, tetap tampilkan Landing Page Home
+        element: <Home />,
       },
       {
         path: 'resep',
         element: <Recipes />,
       },
+      {
+        path: 'dashboard',
+        element: <Dashboard />, 
+      },
     ],
+  },
+  
+  // 2. KELOMPOK HALAMAN AUTENTIKASI (BERSIH TANPA NAVBAR)
+  {
+    path: 'login',
+    element: <Login />,
+  },
+  {
+    path: 'register',
+    element: <Register />,
   },
 ]);
 
