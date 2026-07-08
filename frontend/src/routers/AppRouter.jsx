@@ -5,6 +5,7 @@ import Recipes from '../pages/Recipedetail/Recipedetail';
 import Login from '../pages/Login/Login';         
 import Register from '../pages/Register/Register';   
 import Dashboard from '../pages/Dashboard/Dashboard'; 
+import Kategori from '../pages/Category/Category'; // Sesuaikan dengan folder tempat kamu menyimpan file Kategori.jsx
 
 const router = createBrowserRouter([
   // 1. KELOMPOK HALAMAN PUBLIC (DENGAN NAVBAR & FOOTER)
@@ -13,11 +14,11 @@ const router = createBrowserRouter([
     element: <MainLayout />, 
     children: [
       {
-        index: true, // Terbuka otomatis saat pertama kali aplikasi di-run (http://localhost:5173/)
+        index: true, 
         element: <Home />, 
       },
       {
-        path: 'beranda', // Opsional: Jika diakses lewat rute /beranda, tetap tampilkan Landing Page Home
+        path: 'beranda', 
         element: <Home />,
       },
       {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <Dashboard />, 
+      },
+      // 2. TAMBAHKAN RUTE KATEGORI DI SINI
+      {
+        path: 'kategori',
+        element: <Kategori />,
       },
     ],
   },
