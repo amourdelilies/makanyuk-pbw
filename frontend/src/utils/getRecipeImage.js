@@ -1,13 +1,11 @@
 export default function getRecipeImage(title) {
   if (!title) {
-    return "https://placehold.co/320x240?text=Recipe";
+    return "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400";
   }
 
   const keyword = title
     .toLowerCase()
-    .replace(/[^\w\s]/g, "")
-    .trim()
     .replace(/\s+/g, ",");
 
-  return `https://loremflickr.com/320/240/${keyword}?lock=${keyword}`;
+  return `https://source.unsplash.com/400x300/?${keyword},food`;
 }

@@ -59,19 +59,20 @@ export default function WeeklyPlannerGrid({
 
                 return (
 
-                  <td
-                    key={`${day}-${meal}`}
-                    className="border p-4 h-32 align-middle"
-                  >
+                    <td
+                      key={`${day}-${meal}`}
+                      className="border p-3 h-72 align-top"
+                    >
 
                     <div
                       onClick={() => onCellClick(day, meal)}
-                      className="w-full h-full cursor-pointer"
+                      className="w-full h-64 cursor-pointer"
                     >
                       <PlannerCell
-                        title={recipe?.title}
-                        duration={recipe?.duration}
-                        image={recipe?.image}
+                        title={plannerData?.[day]?.[meal]?.title}
+                        image={plannerData?.[day]?.[meal]?.image}
+                        ingredients={plannerData?.[day]?.[meal]?.ingredients}
+                        url={plannerData?.[day]?.[meal]?.url}
                       />
                     </div>
 
