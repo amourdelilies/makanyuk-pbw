@@ -1,0 +1,42 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. Tabel untuk menyimpan info utama Resep
+model Recipe {
+  id              Int                @id @default(autoincrement())
+  title           String             // Diambil dari 'Title Cleaned'
+  steps           String             @db.Text // Diambil dari 'Steps'
+  category        String             // Diambil dari 'Category'
+  image           String?            // Diambil dari 'URL' (jika berupa link gambar)
+  calories        Int                @default(0) // Nanti dihitung otomatis
+  createdAt       DateTime           @default(now())
+  
+  // Relasi ke tabel penghubung bahan
+  ingredients     RecipeIngredient[]
+}
+
+// 2. Tabel Master Bahan Baku (Unik, tidak boleh kembar)
+model Ingredient {
+  id       Int                @id @default(autoincrement())
+  name     String             @unique // Contoh: "telur", "tomat"
+  recipes  RecipeIngredient[]
+}
+
+// 3. Tabel Penghubung (Junction Table) Many-to-Many
+model RecipeIngredient {
+  id           Int        @id @default(autoincrement())
+  recipeId     Int
+  ingredientId Int
+  
+  recipe       Recipe     @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+
+  @@index([recipeId])
+  @@index([ingredientId])
+}
